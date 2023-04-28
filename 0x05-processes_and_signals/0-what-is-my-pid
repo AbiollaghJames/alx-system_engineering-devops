@@ -1,3 +1,4 @@
-#!/usr/bin/env bash\
+#!/usr/bin/env bash
 # Display own PID
-echo "$$"
+
+echo $$
