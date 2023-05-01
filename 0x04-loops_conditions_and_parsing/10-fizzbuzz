@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #display fizzbuzz
 
-for i in {1..101}
+for i in {1..100}
 do
 	if (( i % 3 == 0 && i % 5 == 0 ))
 	then
@@ -13,6 +13,6 @@ do
 	then
 		echo "Buzz"
 	else
-		echo "$i"
+		echo $i
 	fi
 done
