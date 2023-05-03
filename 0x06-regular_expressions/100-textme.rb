@@ -1,2 +1,2 @@
 #!/usr/bin/env ruby
-puts ARGV[0].scan(/\[sender:(\+?\d+)\] \[receiver:(\+?\d+)\] \[flags:(-?\d:-?\d:-?\d:-?\d:-?\d)\]/).join(",")
+puts ARGV[0].scan(/\[sender:(\+?\w+)\] \[receiver:(\+?\w+)\] \[flags:(-?\d:-?\d:-?\d:-?\d:-?\d)\]/).join(",")
