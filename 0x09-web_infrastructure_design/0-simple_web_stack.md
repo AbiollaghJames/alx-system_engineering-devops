@@ -1,6 +1,7 @@
 Some of the specifics about this Infrastructure:
 
 *1. Server*
+
 A server is a piece of computer hardware or software(Computer program) that provides functionality for other programs or devices, called 'clients'.
 This architecture is called the client-server model
 
