@@ -1,5 +1,5 @@
-#Executing a command
+#Executing a kill command
 
 exec {'killmenow':
-  command  =>  'pkill',
+  command  =>  'pkill killmenow',
 }
