@@ -2,6 +2,4 @@
 
 exec {'killmenow':
   command  =>  'pkill',
-  onlyif   =>  'pgrep killmenow',
-
 }
