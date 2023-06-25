@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#configure private key auth, no password auth
+
+Host 196169-web-01
+  HostName 100.25.26.238
+  User ubuntu
+  IdentityFile ~/.ssh/school
+  PasswordAuthentication no
