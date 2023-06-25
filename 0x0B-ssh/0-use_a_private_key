@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 #connecting to server
 private_key_file="~/.ssh/school"
