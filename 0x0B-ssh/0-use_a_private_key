@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
 
 #connecting to server
-ssh "ubuntu@100.25.26.238"
+username="ubuntu"
+s_address="100.25.26.238"
+p_key_file="~/.ssh/school"
+
+ssh -i "$p_key_file" "$username@$s_address"
