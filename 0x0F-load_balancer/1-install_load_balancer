@@ -13,5 +13,5 @@ backend web-backend
       balance roundrobin
       server 196169-web-01 34.204.61.182 check
       server 196169-web-02 18.207.234.131 check
-     " | sudo tee -a /etc/haproxy/haproxy.cfg
-     sudo service haproxy start
+     " >> /etc/haproxy/haproxy.cfg
+     service haproxy restart
