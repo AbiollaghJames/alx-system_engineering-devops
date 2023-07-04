@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 #Configure Nginx so that its HTTP response contains a custom header
 sudo apt-get update
-sudo apt-get -y install nginx
+sudo apt-get install nginx -y
 sudo ufw allow 'Nginx HTTP'
-sudo mkdir -P /var/www/html
-sudo chmod -R 755 /var/www
-echo "Hello World!" | sudo tee /var/www/html/index.html
-echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
-redir="server_name _;\n\tadd_header X-Served-By \$hostname;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com permanent;"
-sudo sed -i "s/server_name _;/$redir/" /etc/nginx/sites-enabled/default
-redir="listen 80 default_server;\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}"
+echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
+redir="listen 80 default_server;\\n\\tlocation \/redirect_me {\\n\\t\\treturn 301 https:\/\/www.youtube.com/watch?v=QH2-TGUlwu4\/;\\n\\t}"
 sudo sed -i "s/listen 80 default_server;/$redir/" /etc/nginx/sites-enabled/default
-sudo service nginx restart
+echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/404.html
+redir="listen 80 default_server;\\nerror_page 404 \/404.html;\\n\\tlocation = \/404.html {\\n\\t\\troot \/usr\/share\/nginx\/html;\\n\\t\\tinternal;\\n\\t}"
+sudo sed -i "s/listen 80 default_server;/$redir/" /etc/nginx/sites-enabled/default
+redir2="http {\\n\\tadd_header X-Served-By \"$HOSTNAME\";"
+sudo sed -i "s/http {/$redir2/" /etc/nginx/nginx.conf
+sudo service nginx start
