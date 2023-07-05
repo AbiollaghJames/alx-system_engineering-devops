@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #Using what you did for task #0, make your fix short and sweet.
-if sudo service nginx status >/dev/null 2>&31; then
+if !sudo service nginx status >/dev/null 2>&31; then
 	echo "nginx is not running"
 else
 	sudo sed -i 's/listen 80;/listen 80 default_server;/g' /etc/nginx/nginx.conf
