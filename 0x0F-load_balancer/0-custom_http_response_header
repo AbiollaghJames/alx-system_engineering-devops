@@ -2,10 +2,13 @@
 #Configure Nginx so that its HTTP response contains a custom header
 sudo apt-get update
 sudo apt-get install nginx -y
-sudo ufw allow 'Nginx HTTP'
-echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
-redir="listen 80 default_server;\\n\\tlocation \/redirect_me {\\n\\t\\treturn 301 https:\/\/www.youtube.com/watch?v=QH2-TGUlwu4\/;\\n\\t}"
-echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/404.html
-redir2="http {\\n\\tadd_header X-Served-By \"$HOSTNAME\";"
-sudo sed -i "s/http {/$redir2/" /etc/nginx/nginx.conf
-sudo service nginx start
+sudo touch /var/www/html/index.html
+echo "Hello World!" | sudo tee /var/www/html/index.html
+FILEPATH=/etc/nginx/sites-enabled/default
+CONFIG="server_name_;\n\tadd_header X-Served-By \$hostname;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com permanent;"
+sudo sed -i "s/server_name _;/$CONFIG/" "$FILEPATH"
+sudo touch /var/www/html/404.html
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+CODE404="listen 80 default_server;\n\terror_page 404 \/404.html; \n\tlocation = \/404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}"
+sudo sed -i "s/listen 80 default_server;/$CODE404/" "$FILEPATH"
+sudo service nginx restart
