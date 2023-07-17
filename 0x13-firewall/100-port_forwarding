@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # if ufw is not installed
 sudo apt install ufw
 
