@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-""" Python script that returns information about employee todo list progress """
+"""
+Python script that returns information
+about employee todo list progress
+"""
 
 
 import json
@@ -13,15 +16,23 @@ if __name__ == "__main__":
     url = initial_url + "/" + employee_id
 
     response = requests.get(url)
-    todolist_data = response.json()
-    ###print(todolist_data)
+    todolist_data = requests.get(url + "/todos")
+    ###print(todolist_data.json())
 
-    e_name = todolist_data.get("name", "")
-    all_tasks = len(todolist_data.get("tasks", []))
-    done_tasks = sum(1 for task in todolist_data.get("tasks", []) if tasks.get("completed"))
+    e_name = response.json().get("name")
+    ###print(e_name)
+    all_tasks = todolist_data.json()
+    ###print(all_tasks)
 
-    print("Employee {} is done with tasks({} / {}):".format(e_name, done_tasks, all_tasks))
+    done = 0
+    done_tasks = []
+    for task in all_tasks:
+        if task.get('completed'):
+            done_tasks.append(task)
+            done += 1
+    ###print(done_tasks)
 
-    for task in todolist_data.get("tasks", []):
-        if tasks.get("completed"):
-            print("\t {}".format(task.get('title')))
+    print("Employee {} is done with tasks({}/{}):".format(e_name, len(done_tasks), len(all_tasks)))
+
+    for task in done_tasks:
+        print("\t {}".format(task.get('title')))
