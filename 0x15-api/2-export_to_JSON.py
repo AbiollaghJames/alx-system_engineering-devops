@@ -2,7 +2,7 @@
 """ Python script to export data in CSV format """
 
 
-import csv
+import json
 import requests
 import sys
 
@@ -19,8 +19,10 @@ if __name__ == "__main__":
     response = requests.get(todos_path)
     tasks = response.json()
 
-    with open('{}.csv'.format(user_id), 'w') as csv_file:
-        for task in tasks:
-            csv_file.write('"{}","{}","{}","{}"\n'
-                .format(user_id, username, task.get('completed'),
-                    task.get('title')))
+    dic = {user_id: []}
+    for task in tasks:
+        dic[user_id].append({"task": task.get('title'),
+                "completed": task.get('completed'),
+                "username": username})
+    with open('{}.json'.format(user_id), 'w') as json_file:
+        json.dump(dic, json_file)
