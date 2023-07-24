@@ -21,8 +21,7 @@ if __name__ == "__main__":
     tasks = response.json()
     """print(tasks)"""
 
-    with open('{}.csv'.format(user_id), 'w') as file:
+    with open('{}.csv'.format(user_id), 'w') as csv_file:
         for task in tasks:
-            file.write('"{}","{}","{}","{}"\n'
-                    .format(user_id,et username, task.get('completed'),
-                         task.get('title')))
+            csv_file.write('"{}","{}","{}","{}"\n'
+                    .format(user_id,et username, task.get('completed'), task.get('title')))
