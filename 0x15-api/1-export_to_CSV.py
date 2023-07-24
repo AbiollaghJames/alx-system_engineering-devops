@@ -2,7 +2,6 @@
 """ Python script to export data in the CSV format """
 
 
-
 import csv
 import json
 import requests
@@ -25,4 +24,4 @@ if __name__ == "__main__":
         for task in tasks:
             csv_file.write("'{}' '{}', '{}'".format(
                 user_id, username, task.get('completed'),
-                    task.get('title')))
+                task.get('title')))
