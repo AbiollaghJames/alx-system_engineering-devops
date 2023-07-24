@@ -22,10 +22,8 @@ if __name__ == "__main__":
         dic[user_id] = []
 
         for task in tasks:
-            dic[user_id].append({
-                "task": task.get('title'),
-                "completed": task.get('completed'),
-                "username": username
+            dic[user_id].append({"task": task.get('title'),
+                "completed": task.get('completed'), "username": username
             })
 
     with open('todo_all_employees.json', 'w') as file:
