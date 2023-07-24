@@ -22,7 +22,8 @@ if __name__ == "__main__":
     dic = {user_id: []}
     for task in tasks:
         dic[user_id].append({"task": task.get('title'),
-                "completed": task.get('completed'),
-                "username": username})
+            "completed": task.get('completed'),
+            "username": username})
+
     with open('{}.json'.format(user_id), 'w') as json_file:
         json.dump(dic, json_file)
