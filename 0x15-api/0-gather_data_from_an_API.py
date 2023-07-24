@@ -32,8 +32,7 @@ if __name__ == "__main__":
             done += 1
     """print(done_tasks)"""
 
-    print("Employee {} is done with tasks({}/{}):".format(
-        e_name, len(done_tasks), len(all_tasks)))
+    print("Employee {} is done with tasks({}/{}):".format(e_name, len(done_tasks), len(all_tasks)))
 
     for task in done_tasks:
         print("\t {}".format(task.get('title')))
