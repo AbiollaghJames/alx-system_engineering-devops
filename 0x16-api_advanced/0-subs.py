@@ -1,10 +1,9 @@
 #!/usr/bin/python3
-""" Script to get total number of subs """
+""" Scripts to get total subs of subreddit """
 
 
 def number_of_subscribers(subreddit):
-    """ Return subs of given subreddit """
-
+    """ Returns total subs of given subreddit """
     import requests
 
     baseurl = "https://www.reddit.com/r/{}/about.json".format(subreddit)
@@ -14,4 +13,5 @@ def number_of_subscribers(subreddit):
         subs = response.json().get('data').get('subscribers')
     else:
         subs = 0
+
     return subs
