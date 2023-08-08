@@ -1,10 +1,11 @@
 #!/usr/bin/python3
 """ Scripts to get total subs of subreddit """
 
+import requests
+
 
 def number_of_subscribers(subreddit):
     """ Returns total subs of given subreddit """
-    import requests
 
     baseurl = "https://www.reddit.com/r/{}/about.json".format(subreddit)
     headers = {"user-agent": "Fake-Agent"}
