@@ -1,4 +1,5 @@
 **Incident Overview:**
+
 On 4-08-2023, web-01 server experienced an unplanned downtime event that resulted in a disruption of services for users.
 
 **Incident Timeline:**
@@ -34,3 +35,4 @@ Implement an automated scaling system that can dynamically allocate resources ba
 Enhance monitoring and alerting systems to proactively detect unusual traffic patterns, high resource utilization, and potential bottlenecks. This allows for quicker response times in addressing potential issues.
 
 Conduct regular load testing to identify the server's limits and optimize resource allocation. This helps in understanding how the server performs under different traffic scenarios.
+
